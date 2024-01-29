@@ -37,7 +37,7 @@ export async function POST(req: Request) {
 
 
   if (event.type === "checkout.session.completed") {
-    const order = await prismadb.order.update({
+    const order = await prismadb.order.update({ 
       where: {
         id: session?.metadata?.orderId,
       },
@@ -50,6 +50,8 @@ export async function POST(req: Request) {
         orderItems: true,
       }
     });
+
+    
   }
 
   return new NextResponse(null, { status: 200 });

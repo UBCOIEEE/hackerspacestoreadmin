@@ -16,6 +16,7 @@ interface ItemType {
     productIndex: number;
     productQuantity: number;
     productPrice: number;
+    productName: string;
   }
 
 export async function OPTIONS() {
@@ -25,10 +26,6 @@ export async function OPTIONS() {
 function generateRandomValue(): number {
     return Math.floor(Math.random() * (97 - 27 + 1)) + 27;
   }
-
-
-
-  
 
 export async function POST(
     req: Request,
@@ -50,20 +47,35 @@ export async function POST(
         productIndex: item.productIndex,
         productQuantity: item.productQuantity,
         productPrice: item.productPrice,
+        productName: item.productName
       }));
       const productIdss: string[] = items.map((item: ItemType) => item.productValueId);
 
-      const productvalues = await prismadb.productvalue.findMany({
+      /*const productvalues = await prismadb.productvalue.findMany({
         where: {
           id: {
             in: productIdss
           }
         }
-      });
+      });*/
     
       const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
     
-      productvalues.forEach((productvalue) => {
+      items.forEach((item: ItemType) => {
+        line_items.push({
+          quantity: item.productQuantity,
+          price_data: {
+            currency: 'CAD',
+            product_data: {
+              name: item.productName,
+            },
+            unit_amount: item.productPrice * 100
+          }
+        });
+      });
+
+
+      /*productvalues.forEach((productvalue) => {
         line_items.push({
           quantity: 1,
           price_data: {
@@ -74,7 +86,7 @@ export async function POST(
             unit_amount: productvalue.price * 100
           }
         });
-      });
+      });*/
 
     const latestOrder = await prismadb.order.findFirst({
         where: {
@@ -100,7 +112,7 @@ export async function POST(
       );
 
     const order = await prismadb.order.create({
-        data: {
+        data: { 
             storeId: params.storeId, 
             isPaid: false,
             orderItems: {

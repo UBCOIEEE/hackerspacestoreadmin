@@ -32,13 +32,6 @@ export async function GET(request: Request) {
                 {thirdtype: {
                     contains: searchQuery,
                 }},
-                {
-                    size:{
-                        value: {
-                            contains: searchQuery,
-                        }
-                    }
-                },
             ],
             
         },
