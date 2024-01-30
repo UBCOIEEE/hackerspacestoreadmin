@@ -19,7 +19,7 @@ export async function GET (
                 values: {
                     include:{
                         images: true,
-                        color: true
+                        //color: true
                     },
                 },
                 category: true,
@@ -129,7 +129,7 @@ export async function PATCH (
                       typevaluechildren: string;
                       typevaluethird: string;
                       price: number;
-                      colorId: string;
+                      //colorId: string;
                       quantity: number;
                       index: number;
                     }) => ({
@@ -138,7 +138,7 @@ export async function PATCH (
                       typevaluethird: value.typevaluethird,
                       price: value.price,
                       productname: name,
-                      colorId: value.colorId,
+                      //colorId: value.colorId,
                       quantity: value.quantity,
                       index: value.index,
                     })),
@@ -228,6 +228,12 @@ export async function DELETE (
             }
         });
 
+        const productvalue = await prismadb.productvalue.deleteMany({
+            where: {
+                productId: params.productId,
+            }
+        });
+        NextResponse.json(productvalue)
         return NextResponse.json(product);
 
     }catch(error){

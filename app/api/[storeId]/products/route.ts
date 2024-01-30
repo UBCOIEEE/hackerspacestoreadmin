@@ -81,7 +81,7 @@ export async function POST(
                       typevaluechildren: string;
                       typevaluethird: string;
                       price: number;
-                      colorId: string;
+                      //colorId: string;
                       quantity: number;
                       index: number;
                     }) => ({
@@ -90,7 +90,7 @@ export async function POST(
                       typevaluethird: value.typevaluethird,
                       productname: name,
                       price: value.price,
-                      colorId: value.colorId,
+                      //colorId: value.colorId,
                       quantity: value.quantity,
                       index: value.index,
                       
@@ -158,7 +158,7 @@ export async function GET(
                 values: {
                   include:{
                     images: true,
-                    color: true
+                    //color: true
                   }
                 },
                 category: true,

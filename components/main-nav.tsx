@@ -39,7 +39,7 @@ export function MainNav({
         },
         {
             href: `/${params.storeId}/colors`,
-            label: "Colors",
+            label: "For Future Use",
             active: pathname === `/${params.storeId}/colors`,
         },
         {
