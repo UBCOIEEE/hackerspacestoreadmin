@@ -95,11 +95,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     ? {
         ...initialData,
         values: initialData.values
-          .map((value: { price: any; }) => ({
+          .map((value) => ({
             ...value,
             price: parseFloat(String(value?.price)),
           }))
-          .sort((a: { index: number; }, b: { index: number; }) => a.index - b.index),
+          .sort((a, b) => a.index - b.index),
         //values: [...initialData.values].sort((a, b) => a.index - b.index),
       }
     : {

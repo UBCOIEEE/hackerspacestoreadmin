@@ -30,7 +30,7 @@ const ProductsPage = async ({
     }
   });
 
-  const formattedProducts: ProductColumn[] = products.map((item: { id: any; name: any; isFeatured: any; isArchived: any; mastertype: any; mode: any; description: any; childrentype: any; thirdtype: any; values: { index: any; price: any; typevaluemaster: any; typevaluechildren: any; typevaluethird: any; quantity: any; images: any; }[]; category: { name: any; }; size: { name: any; }; createdAt: number | Date; }) => ({
+  const formattedProducts: ProductColumn[] = products.map((item) => ({
     id: item.id,
     name: item.name,
     isFeatured: item.isFeatured,
@@ -40,7 +40,7 @@ const ProductsPage = async ({
     description: item.description,
     childrentype: item.childrentype,
     thirdtype: item.thirdtype,
-    values: item.values.map((value: { index: any; price: any; typevaluemaster: any; typevaluechildren: any; typevaluethird: any; quantity: any; images: any; }) => ({
+    values: item.values.map((value) => ({
       index: value.index,
       price: value.price,
       typevaluemaster: value.typevaluemaster,
