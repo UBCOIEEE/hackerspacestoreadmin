@@ -21,7 +21,6 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
           },
           productvalue: {
             include:{
-              color: true,
               images: true
             }
           }
@@ -33,7 +32,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
     },
   });
 
-  const formattedOrders: OrderColumn[] = orders.map((item) => ({
+  const formattedOrders: OrderColumn[] = orders.map((item: { id: any; firstname: any; lastname: any; phone: any; confirmationid: any; studentId: any; personalemail: any; address: any; studentemail: any; totalPrice: number; isPaid: any; createdAt: any; orderItems: any[]; }) => ({
     id: item.id,
     firstname: item.firstname,
     lastname: item.lastname,
@@ -43,11 +42,6 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
     personalemail: item.personalemail,
     address: item.address,
     studentemail: item.studentemail, 
-    /*addressline1: item.addressline1,
-        addressline2: item.addressline2,
-        postal: item.postal,
-        city: item.city,
-        country: item.country,*/
     totalPrice: formatter.format(item.totalPrice),
     isPaid: item.isPaid,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
@@ -63,7 +57,6 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
       mode: orderItem.product.mode,
       size: orderItem.product.size.value,
       image: orderItem.productvalue.images[0].url,
-      color: orderItem.productvalue.color.name,
       quantity: orderItem.quantity,
       index: orderItem.productvalue.index,
       category: orderItem.product.category.name

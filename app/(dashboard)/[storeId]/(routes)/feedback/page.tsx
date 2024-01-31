@@ -14,7 +14,7 @@ const FeedbackPage = async ({ params }: { params: { storeId: string } }) => {
     },
   });
 
-  const formattedFeedback: FeedbackColumn[] = feedback.map((item) => ({
+  const formattedFeedback: FeedbackColumn[] = feedback.map((item: { id: any; firstname: any; lastname: any; phone: any; studentId: any; email: any; ordernumber: any; feedbackIn: any; createdAt: any; reviewed: any; }) => ({
     id: item.id,
     firstname: item.firstname,
     lastname: item.lastname,
