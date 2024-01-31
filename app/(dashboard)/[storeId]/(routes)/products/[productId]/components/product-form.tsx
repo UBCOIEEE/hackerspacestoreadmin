@@ -99,7 +99,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             ...value,
             price: parseFloat(String(value?.price)),
           }))
-          .sort((a: { index: any; }, b: { index: any; }) => a.index - b.index),
+          .sort((a: { index: number; }, b: { index: number; }) => a.index - b.index),
         //values: [...initialData.values].sort((a, b) => a.index - b.index),
       }
     : {
