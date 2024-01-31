@@ -17,7 +17,7 @@ const ColorsPage = async ({
         }
     }); 
 
-    const formattedColors: ColorColumn[] = colors.map((item: { id: any; name: any; value: any; createdAt: any; })=>({
+    const formattedColors: ColorColumn[] = colors.map((item)=>({
         id: item.id,
         name: item.name,
         value: item.value,

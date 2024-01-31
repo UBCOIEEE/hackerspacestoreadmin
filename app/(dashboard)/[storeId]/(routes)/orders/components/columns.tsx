@@ -1,5 +1,6 @@
 "use client";
 
+import { StringValidation } from "zod";
 import { useState } from "react";
 import { Modal } from "@/components/ui/modal";
 import Image from "next/image";
@@ -8,6 +9,7 @@ import TotalPrice from "@/components/ui/totalprice";
 
 
 import { ColumnDef, CellContext } from "@tanstack/react-table";
+import { Decimal } from "@prisma/client/runtime/library";
 
 export type OrderColumn = {
   id: string;
@@ -34,6 +36,7 @@ export type OrderColumn = {
     mode: string; 
     size: string; 
     image: string; 
+    color: string;
     quantity: number;
     index: number; 
     category: string; 
@@ -133,6 +136,11 @@ const OrderCell: React.FC<OrderCellProps> = ({ cell }) => {
                 <br />
                 
                 <div className="flex items-center justify-center">
+                  <div
+                    className="h-5 w-5 rounded-full border"
+                    style={{ backgroundColor: product.color }}
+                  />
+                  <span className="ml-2">{product.color}</span>
                 </div>
                 <br />
               </div>
@@ -200,3 +208,54 @@ export const columns: ColumnDef<OrderColumn>[] = [
     header: "Date",
   },
 ];
+
+/*"use client"
+
+import { Button } from "@/components/ui/button"
+import { ColumnDef } from "@tanstack/react-table"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+
+// This type is used to define the shape of our data.
+// You can use a Zod schema here if you want.
+export type BillboardColumn = {
+  id: string;
+  label: string;
+  //status: string //"pending" | "processing" | "success" | "failed"
+  //email: string
+  createdAt: string;
+}
+
+export const columns: ColumnDef<BillboardColumn>[] = [
+  /*{
+    accessorKey: "status",
+    header: "Status",
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
+    accessorKey: "amount",
+    header: "Amount",
+  },
+  {
+    accessorKey: "label",
+    header: "Label",
+    /*header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Email
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+      },
+  },},
+  {
+    accessorKey: "createdAt",
+    header: "Date",
+  },
+]
+*/

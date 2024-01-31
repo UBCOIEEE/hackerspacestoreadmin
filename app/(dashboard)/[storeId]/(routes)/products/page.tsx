@@ -21,7 +21,7 @@ const ProductsPage = async ({
       values: {
         include:{
           images: true,
-          //color: true,
+          color: true,
         }
       },
     },
@@ -30,7 +30,7 @@ const ProductsPage = async ({
     }
   });
 
-  const formattedProducts: ProductColumn[] = products.map((item: { id: any; name: any; isFeatured: any; isArchived: any; mastertype: any; mode: any; description: any; childrentype: any; thirdtype: any; values: any[]; category: { name: any; }; size: { name: any; }; createdAt: any }) => ({
+  const formattedProducts: ProductColumn[] = products.map((item) => ({
     id: item.id,
     name: item.name,
     isFeatured: item.isFeatured,
@@ -47,6 +47,7 @@ const ProductsPage = async ({
       typevaluechildren: value.typevaluechildren,
       typevaluethird: value.typevaluethird,
       quantity: value.quantity,
+      color: value.color.value,
       images: value.images,
     })),
     category: item.category.name,

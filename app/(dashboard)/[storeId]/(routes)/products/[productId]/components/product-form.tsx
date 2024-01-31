@@ -4,6 +4,7 @@ import * as z from "zod";
 import axios from "axios";
 import {
   Category,
+  Color,
   Image,
   Product,
   Size,
@@ -54,6 +55,7 @@ const formSchema = z.object({
     .object({
       typevaluechildren: z.string().optional(),
       typevaluemaster: z.string().optional(),
+      colorId: z.string().min(1),
       price: z.coerce.number().min(1),
       typevaluethird: z.string().optional(),
       images: z.object({ url: z.string() }).array(),
@@ -73,12 +75,14 @@ interface ProductFormProps {
     | null;
   categories: Category[];
   sizes: Size[];
+  colors: Color[];
 }
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
   categories,
   sizes,
+  colors,
 }) => {
   const params = useParams();
   const router = useRouter();
@@ -94,12 +98,13 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   const defaultValues = initialData
     ? {
         ...initialData,
+        //price: parseFloat(String(initialData?.price)),
         values: initialData.values
-          .map((value: { price: any; }) => ({
+          .map((value) => ({
             ...value,
             price: parseFloat(String(value?.price)),
           }))
-          .sort((a: any, b:any) => a.index - b.index),
+          .sort((a, b) => a.index - b.index),
         //values: [...initialData.values].sort((a, b) => a.index - b.index),
       }
     : {
@@ -108,7 +113,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         values: [
           {
             typevaluechildren: "",
-            //colorId: " ",
+            colorId: " ",
             typevaluemaster: " ",
             quantity: 0,
             index: 1,
@@ -459,7 +464,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                             </FormItem>
                           )}
                         />
-                        {/*<FormField
+                        <FormField
                           control={form.control}
                           name={`values.${index}.colorId`}
                           render={({ field }) => (
@@ -490,7 +495,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                               <FormMessage />
                             </FormItem>
                           )}
-                        />*/}
+                        />
                       </div>
                     ))}
                 </div>
@@ -604,7 +609,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                             {createButtonPressed && <FormMessage />}
                           </FormItem>
                         )}
-                      />{/*
+                      />
                       <FormField
                         control={form.control}
                         name={`values.${index}.colorId`}
@@ -636,7 +641,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                             <FormMessage />
                           </FormItem>
                         )}
-                                />*/}
+                      />
 
                       <div className="flex items-center mt-8 col-span-3 md:col-span-1">
                         <Button
@@ -658,7 +663,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         append({
                           typevaluemaster: "",
                           typevaluechildren: "",
-                          //colorId: "",
+                          colorId: "",
                           typevaluethird: "",
                           quantity: 0,
                           price: 0,
@@ -818,7 +823,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                             {createButtonPressed && <FormMessage />}
                           </FormItem>
                         )}
-                      />{/*
+                      />
                       <FormField
                         control={form.control}
                         name={`values.${index}.colorId`}
@@ -850,7 +855,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                             <FormMessage />
                           </FormItem>
                         )}
-                      />*/}
+                      />
 
                       <div className="flex items-center mt-8">
                         <Button
@@ -872,7 +877,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         append({
                           typevaluemaster: "",
                           typevaluechildren: "",
-                          //colorId: "",
+                          colorId: "",
                           typevaluethird: "",
                           quantity: 0,
                           price: 0,
@@ -1067,7 +1072,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                             {createButtonPressed && <FormMessage />}
                           </FormItem>
                         )}
-                      />{/*
+                      />
                       <FormField
                         control={form.control}
                         name={`values.${index}.colorId`}
@@ -1099,7 +1104,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                             <FormMessage />
                           </FormItem>
                         )}
-                      />*/}
+                      />
 
                       <div className="flex items-center mt-8">
                         <Button
@@ -1121,7 +1126,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                         append({
                           typevaluemaster: "",
                           typevaluechildren: "",
-                          //colorId: "",
+                          colorId: "",
                           typevaluethird: "",
                           quantity: 0,
                           price: 0,

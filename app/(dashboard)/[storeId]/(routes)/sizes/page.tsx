@@ -17,7 +17,7 @@ const SizesPage = async ({
         }
     });
 
-    const formattedSizes: SizeColumn[] = sizes.map((item: { id: any; name: any; value: any; createdAt: any; })=>({
+    const formattedSizes: SizeColumn[] = sizes.map((item)=>({
         id: item.id,
         name: item.name,
         value: item.value,

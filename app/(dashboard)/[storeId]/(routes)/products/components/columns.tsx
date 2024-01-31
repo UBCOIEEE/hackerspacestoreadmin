@@ -24,7 +24,7 @@ export type ProductColumn = {
     typevaluechildren: string;
     typevaluethird: string;
     quantity: number;
-    //color: string;
+    color: string;
     price: number;
     images: {
       url: string;
@@ -134,14 +134,13 @@ export const columns: ColumnDef<ProductColumn>[] = [
                     </>
                   )}
                 </div>
-                {/*<div className="flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2">
                   {value.color}
                   <div
                     className="h-6 w-6 rounded-full border"
                     style={{ backgroundColor: value.color }}
                   />
                 </div>
-                */}
               </div>
             ))
           ) : (

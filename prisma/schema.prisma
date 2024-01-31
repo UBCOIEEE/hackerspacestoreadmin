@@ -134,11 +134,11 @@ model Productvalue{
   quantity    Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  //colorId       String    // Foreign Key to Color
-  //color         Color     @relation(fields: [colorId], references: [id])
+  colorId       String    // Foreign Key to Color
+  color         Color     @relation(fields: [colorId], references: [id])
 
   @@index([productId])
-  //@@index([colorId])
+  @@index([colorId])
 }
 
 model Image {
@@ -229,7 +229,7 @@ model Color {
   store       Store    @relation("StoreToColor", fields: [storeId], references: [id])
   name        String
   value       String
-  //productvalues Productvalue[] // Relation to Product model
+  productvalues Productvalue[] // Relation to Product model
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 
