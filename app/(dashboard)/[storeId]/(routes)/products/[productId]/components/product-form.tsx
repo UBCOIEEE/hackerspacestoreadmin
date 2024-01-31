@@ -4,7 +4,6 @@ import * as z from "zod";
 import axios from "axios";
 import {
   Category,
-  Color,
   Image,
   Product,
   Size,
@@ -55,7 +54,6 @@ const formSchema = z.object({
     .object({
       typevaluechildren: z.string().optional(),
       typevaluemaster: z.string().optional(),
-      //colorId: z.string().min(1),
       price: z.coerce.number().min(1),
       typevaluethird: z.string().optional(),
       images: z.object({ url: z.string() }).array(),
@@ -68,17 +66,19 @@ const formSchema = z.object({
 type ProductFormValues = z.infer<typeof formSchema>;
 
 interface ProductFormProps {
-  initialData:  (Product & { values: Productvalue[];}) | null;
+  initialData:
+    | (Product & {
+        values: Productvalue[];
+      })
+    | null;
   categories: Category[];
   sizes: Size[];
-  //colors: Color[];
 }
 
 export const ProductForm: React.FC<ProductFormProps> = ({
   initialData,
   categories,
   sizes,
-  //colors,
 }) => {
   const params = useParams();
   const router = useRouter();
