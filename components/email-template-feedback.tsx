@@ -81,7 +81,7 @@ export const EmailTemplateFeedback = ({
       <Preview>Your feedback was received</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Section className = "mx-auto" style={logo}>
+          <Section style={logo}>
             <Img width={114} src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706233756/IEEE_Okanagan_Student_Chapter_Logo_transparent_yiowkm.png" />
           </Section>
           <Section style={sectionsBorders}>
@@ -98,7 +98,7 @@ export const EmailTemplateFeedback = ({
               {formattedDate}:
             </Text>
             <Text style={paragraph}>
-              {message}
+              "{message}"
             </Text>
             <Text style={paragraph}>
               We thank you for your contribution in our store development. Our team will review 
@@ -113,31 +113,31 @@ export const EmailTemplateFeedback = ({
         </Container>
 
         <Section style={footer}>
-          <Row>
-            <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
-              
+          <Row style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+            <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
+              <a href={ubcoieeeoficialsiteurl}>
                 <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/UBCOIEEELOGO_n9rkxc.png" />
-              
+              </a>
             </Column>
-            <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
-              
+            <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
+              <a href={twitterurl}>
                 <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758878/twitter-logo_oxhc5t.png" />
-              
+              </a>
             </Column>
-            <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
-              
+            <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
+              <a href={linkedinurl}>
                 <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/linkedin-logo_kd7joi.webp" />
-              
+              </a>
             </Column>
-            <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
-              
+            <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
+              <a href={facebookurl}>
                 <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/facebook-logo_qqu0s6.png" />
-              
+              </a>
             </Column>
-            <Column align="left" style={{ width: "50%", paddingLeft: "8px" }}>
-              
+            <Column align="left" style={{ flex: "20%", paddingLeft: "8px" }}>
+              <a href={instagramurl}>
                 <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758877/instagram-logo_lurtub.png"/>
-              
+              </a>
             </Column>
           </Row>
           <Row>
