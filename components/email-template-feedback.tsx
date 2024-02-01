@@ -110,9 +110,7 @@ export const EmailTemplateFeedback = ({
               Hackerspace Store - UBCO IEEE branch
             </Text>
           </Section>
-        </Container>
-
-        <Section style={footer}>
+          <Section>
           <Row style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
             <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
               <a href={ubcoieeeoficialsiteurl}>
@@ -140,6 +138,10 @@ export const EmailTemplateFeedback = ({
               </a>
             </Column>
           </Row>
+          </Section>
+        </Container>
+
+        <Section style={footer}>
           <Row>
             <Text style={{ textAlign: "center", color: "#706a7b" }}>
               © 2024 Hackerspace Store, All Rights Reserved <br />
