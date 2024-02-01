@@ -59,7 +59,7 @@ interface EmailTemplateProps {
   firstName: string;
   message: string;
 }
-const ubcoieeeoficialsiteurl = 'https://ubcoieee.org/'
+const ubcoieeeoficialsiteurl = "https://ubcoieee.org/"
 const twitterurl = "https://twitter.com/UBCOIEEE"
 const facebookurl = "https://www.facebook.com/IEEEUBCO/"
 const linkedinurl = "https://www.linkedin.com/company/ieee-okanagan-student-chapter/"
@@ -98,7 +98,7 @@ export const EmailTemplateFeedback = ({
               {formattedDate}:
             </Text>
             <Text style={paragraph}>
-              "{message}"
+            &quot;{message}&quot;
             </Text>
             <Text style={paragraph}>
               We thank you for your contribution in our store development. Our team will review 
