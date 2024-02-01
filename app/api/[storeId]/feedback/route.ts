@@ -4,6 +4,9 @@ import Page from "@/app/(auth)/(routes)/sign-in/[[...sign-in]]/page";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Email } from "@clerk/nextjs/server";
+import { Resend } from 'resend';
+import { EmailTemplate } from '@/components/email-template';
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
@@ -36,14 +39,21 @@ export async function POST(
         },
     })
 
-    const email = {
+    /*const email = {
         name: formData.firstname,
         email: formData.email,
         subject: 'Feedback Summary',
         message: formData.feedbackIn
-    }
+    }*/
 
-    const sendEmail = async (e: { preventDefault: () => void; }) => {
+    await resend.emails.send({
+        from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+        to: formData.email,
+        subject: 'Feedback Summary',
+        react: EmailTemplate({ firstName: formData.firstname, message: formData.feedbackIn }) as React.ReactElement,
+    });
+
+    /*const sendEmail = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         const response = await fetch('/api/send', {
             method: 'POST',
@@ -57,7 +67,7 @@ export async function POST(
         }else{
             toast.error("Something went wrong!")
         }
-    }
+    }*/
     
     NextResponse.json(feedback)
     
