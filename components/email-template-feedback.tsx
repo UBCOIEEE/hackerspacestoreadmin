@@ -113,27 +113,27 @@ export const EmailTemplateFeedback = ({
           </Section>
           <Section>
           <Row style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-            <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
+            <Column>
               <a href={ubcoieeeoficialsiteurl}>
                 <Image src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/UBCOIEEELOGO_n9rkxc.png" width={30} height={30} alt="" />
               </a>
             </Column>
-            <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
+            <Column >
               <a href={twitterurl}>
                 <Image src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758878/twitter-logo_oxhc5t.png" width={30} height={30} alt=""/>
               </a>
             </Column>
-            <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
+            <Column /*style={{ flex: "20%", paddingRight: "8px" }}*/ >
               <a href={linkedinurl}>
                 <Image src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/linkedin-logo_kd7joi.webp"  width={30} height={30} alt=""/>
               </a>
             </Column>
-            <Column align="right" style={{ flex: "20%", paddingRight: "8px" }}>
+            <Column >
               <a href={facebookurl}>
                 <Image src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/facebook-logo_qqu0s6.png"  width={30} height={30} alt=""/>
               </a>
             </Column>
-            <Column align="left" style={{ flex: "20%", paddingLeft: "8px" }}>
+            <Column >
               <a href={instagramurl}>
                 <Image src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758877/instagram-logo_lurtub.png" width={30} height={30} alt=""/>
               </a>
