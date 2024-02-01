@@ -74,7 +74,6 @@ export const EmailTemplateFeedback = ({
   const formattedDate = new Intl.DateTimeFormat("en", {
     dateStyle: "medium",
     timeStyle: "medium",
-    timeZone:  "America/Los_Angeles",
     }).format(time);
 
   return (
