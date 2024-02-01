@@ -46,7 +46,6 @@ export async function POST(
         message: formData.feedbackIn
     }*/
         const date = new Date();
-        date.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' });
         await resend.emails.send({
             from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
             to: formData.email,
