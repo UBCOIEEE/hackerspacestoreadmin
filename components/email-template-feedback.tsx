@@ -116,27 +116,27 @@ export const EmailTemplateFeedback = ({
           <Row>
             <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
               <Link href={ubcoieeeoficialsiteurl} style={link}>
-                <Img src='react-email-starter\static\UBCOIEEELOGO.png' />
+                <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/UBCOIEEELOGO_n9rkxc.png" />
               </Link>
             </Column>
             <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
               <Link href={twitterurl} style={link}>
-                <Img src='react-email-starter\static\twitter-logo.png' />
+                <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758878/twitter-logo_oxhc5t.png" />
               </Link>
             </Column>
             <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
               <Link href={linkedinurl} style={link}>
-                <Img src='react-email-starter\static\linkedin-logo.webp' />
+                <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/linkedin-logo_kd7joi.webp" />
               </Link>
             </Column>
             <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
               <Link href={facebookurl} style={link}>
-                <Img src='react-email-starter\static\facebook-logo.png' />
+                <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/facebook-logo_qqu0s6.png" />
               </Link>
             </Column>
             <Column align="left" style={{ width: "50%", paddingLeft: "8px" }}>
               <Link href={instagramurl} style={link}>
-                <Img src='react-email-starter\static\facebook-logo.png'/>
+                <Img src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758877/instagram-logo_lurtub.png"/>
               </Link>
             </Column>
           </Row>
