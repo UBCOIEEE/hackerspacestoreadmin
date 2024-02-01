@@ -5,7 +5,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { Email } from "@clerk/nextjs/server";
 import { Resend } from 'resend';
-import { EmailTemplate } from '@/components/email-template';
+import { EmailTemplateFeedback } from '@/components/email-template-feedback';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const corsHeaders = {
@@ -45,12 +45,12 @@ export async function POST(
         subject: 'Feedback Summary',
         message: formData.feedbackIn
     }*/
-
+    const currenttime = new Date()
     await resend.emails.send({
         from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
         to: formData.email,
         subject: 'Feedback Summary',
-        react: EmailTemplate({ firstName: formData.firstname, message: formData.feedbackIn }) as React.ReactElement,
+        react: EmailTemplateFeedback({ firstName: formData.firstname, message: formData.feedbackIn, time: currenttime }) as React.ReactElement,
     });
 
     /*const sendEmail = async (e: { preventDefault: () => void; }) => {
