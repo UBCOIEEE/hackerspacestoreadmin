@@ -1,6 +1,9 @@
 import { NextResponse  } from "next/server";
 import prismadb from "@/lib/prismadb";
 import Page from "@/app/(auth)/(routes)/sign-in/[[...sign-in]]/page";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { Email } from "@clerk/nextjs/server";
 
 const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
@@ -32,6 +35,29 @@ export async function POST(
             reviewed: formData.reviewed,
         },
     })
+
+    const email = {
+        name: formData.firstname,
+        email: formData.email,
+        subject: 'Feedback Summary',
+        message: formData.feedbackIn
+    }
+
+    const sendEmail = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        const response = await fetch('/api/send', {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(email),
+        })
+        if(response.status === 200){
+            toast.success(`Hey ${email.name}, your message was sent successfully!`)
+        }else{
+            toast.error("Something went wrong!")
+        }
+    }
     
     NextResponse.json(feedback)
     
