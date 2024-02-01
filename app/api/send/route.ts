@@ -16,8 +16,8 @@ export async function POST(req: Request) {
       subject: subject,
       react: EmailTemplate({ firstName: name, message: message }) as React.ReactElement,
     });
-    return NextResponse.json({ data });
+    return NextResponse.json(data);
   } catch (error) {
-    return Response.json({ error });
+    return Response.json(error);
   }
 }
