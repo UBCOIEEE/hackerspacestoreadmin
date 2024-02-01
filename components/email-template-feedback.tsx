@@ -74,6 +74,7 @@ export const EmailTemplateFeedback = ({
   const formattedDate = new Intl.DateTimeFormat("en", {
     dateStyle: "medium",
     timeStyle: "medium",
+    timeZone: 'America/Los_Angeles'
     }).format(time);
 
   return (
@@ -111,7 +112,8 @@ export const EmailTemplateFeedback = ({
               Hackerspace Store - UBCO IEEE branch
             </Text>
           </Section>
-          <Section>
+          
+          {/*<Section>
           <Row style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
             <Column>
               <a href={ubcoieeeoficialsiteurl}>
@@ -123,7 +125,7 @@ export const EmailTemplateFeedback = ({
                 <Image src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758878/twitter-logo_oxhc5t.png" width={30} height={30} alt=""/>
               </a>
             </Column>
-            <Column /*style={{ flex: "20%", paddingRight: "8px" }}*/ >
+            <Column /*style={{ flex: "20%", paddingRight: "8px" }}*/ }{/*>
               <a href={linkedinurl}>
                 <Image src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/linkedin-logo_kd7joi.webp"  width={30} height={30} alt=""/>
               </a>
@@ -139,7 +141,7 @@ export const EmailTemplateFeedback = ({
               </a>
             </Column>
           </Row>
-          </Section>
+          </Section>*/}
         </Container>
 
         <Section style={footer}>
