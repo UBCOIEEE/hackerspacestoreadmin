@@ -142,12 +142,63 @@ export const EmailTemplateFeedback = ({
             </Column>
           </Row>
           </Section>*/}
+          <Row
+            style={{
+              width: "120px",
+            }}
+          >
+            <Column style={{ paddingRight: "4px" }}>
+              <Link href={twitterurl}>
+                <Img
+                  width="20"
+                  height="20"
+                  src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758878/twitter-logo_oxhc5t.png"
+                />
+              </Link>
+            </Column>
+            <Column style={{ paddingRight: "4px" }}>
+              <Link href={instagramurl}>
+                <Img
+                  width="20"
+                  height="20"
+                  src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758877/instagram-logo_lurtub.png"
+                />
+              </Link>
+            </Column>
+            <Column align = 'center'>
+              <Link href={ubcoieeeoficialsiteurl}>
+                <Img
+                  width="20"
+                  height="20"
+                  src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/UBCOIEEELOGO_n9rkxc.png"
+                />
+              </Link>
+            </Column>
+            <Column style={{ paddingLeft: "4px" }}>
+              <Link href={facebookurl}>
+                <Img
+                  width="20"
+                  height="20"
+                  src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/facebook-logo_qqu0s6.png"
+                />
+              </Link>
+            </Column>
+            <Column style={{ paddingLeft: "4px" }}>
+              <Link href={linkedinurl}>
+                <Img
+                  width="20"
+                  height="20"
+                  src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/linkedin-logo_kd7joi.webp"
+                />
+              </Link>
+            </Column>
+          </Row>
         </Container>
 
         <Section style={footer}>
           <Row>
             <Text style={{ textAlign: "center", color: "#706a7b" }}>
-              © 2024 Hackerspace Store, All Rights Reserved <br />
+              © 2024 Hackerspace Store, All Rights Reserved <br/>
               2245 EME, 1137 Alumni Avenue, Kelowna, BC V1V 1V7
             </Text>
           </Row>
