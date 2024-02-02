@@ -1,6 +1,9 @@
 import Stripe from "stripe"
 import { headers } from "next/headers"
 import { NextResponse } from "next/server"
+import { Resend } from 'resend';
+import { EmailTemplateFeedback } from '@/components/email-template-feedback';
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 import { stripe } from "@/lib/stripe"
 import prismadb from "@/lib/prismadb"
@@ -50,8 +53,14 @@ export async function POST(req: Request) {
         orderItems: true,
       }
     });
-
-    
+  }else{
+    const date = new Date();
+        await resend.emails.send({
+            from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+            to: 'ytulenov@gmail.com     ',
+            subject: 'Feedback Summary',
+            react: EmailTemplateFeedback({ firstName: 'unsuccessful', message: 'test to see if that works lol', time: date }) as React.ReactElement,
+        });
   }
 
   return new NextResponse(null, { status: 200 });
