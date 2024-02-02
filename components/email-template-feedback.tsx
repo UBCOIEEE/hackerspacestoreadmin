@@ -144,23 +144,23 @@ export const EmailTemplateFeedback = ({
           </Section>*/}
           <Row
             style={{
-              width: "120px",
+              width: "500px",
             }}
           >
-            <Column style={{ paddingRight: "4px" }}>
+            <Column style={{ paddingRight: "8px" }}>
               <Link href={twitterurl}>
                 <Img
-                  width="20"
-                  height="20"
+                  width="40"
+                  height="40"
                   src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758878/twitter-logo_oxhc5t.png"
                 />
               </Link>
             </Column>
-            <Column style={{ paddingRight: "4px" }}>
+            <Column style={{ paddingRight: "8px" }}>
               <Link href={instagramurl}>
                 <Img
-                  width="20"
-                  height="20"
+                  width="40"
+                  height="40"
                   src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758877/instagram-logo_lurtub.png"
                 />
               </Link>
@@ -168,26 +168,26 @@ export const EmailTemplateFeedback = ({
             <Column align = 'center'>
               <Link href={ubcoieeeoficialsiteurl}>
                 <Img
-                  width="20"
-                  height="20"
+                  width="40"
+                  height="40"
                   src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/UBCOIEEELOGO_n9rkxc.png"
                 />
               </Link>
             </Column>
-            <Column style={{ paddingLeft: "4px" }}>
+            <Column style={{ paddingLeft: "8px" }}>
               <Link href={facebookurl}>
                 <Img
-                  width="20"
-                  height="20"
+                  width="40"
+                  height="40"
                   src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/facebook-logo_qqu0s6.png"
                 />
               </Link>
             </Column>
-            <Column style={{ paddingLeft: "4px" }}>
+            <Column style={{ paddingLeft: "8px" }}>
               <Link href={linkedinurl}>
                 <Img
-                  width="20"
-                  height="20"
+                  width="40"
+                  height="40"
                   src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706758875/linkedin-logo_kd7joi.webp"
                 />
               </Link>
