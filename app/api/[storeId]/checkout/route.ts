@@ -151,14 +151,14 @@ export async function POST(
 
     const date = new Date();
 
-    if(session.url === `${process.env.FRONTEND_STORE_URL}/cart?success=1&confirm=${order.id}`){
+    if(session.success_url){
       await resend.emails.send({
           from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
           to: 'ytulenov@gmail.com',
           subject: 'Payment successed',
           react: EmailTemplateFeedback({ firstName: 'yerkin', message: 'yerkin', time: date }) as React.ReactElement,
       });}
-       else if (session.url === `${process.env.FRONTEND_STORE_URL}/cart?canceled=1`){
+       else if (session.cancel_url){
         await resend.emails.send({
         from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
         to: 'ytulenov@gmail.com',
