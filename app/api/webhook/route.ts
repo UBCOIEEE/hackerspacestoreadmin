@@ -53,7 +53,7 @@ export async function POST(req: Request) {
         orderItems: true,
       }
     });
-  }else if(event.type === "checkout.session.async_payment_failed"){
+  }else{
     const date = new Date();
     await resend.emails.send({
     from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
