@@ -149,18 +149,6 @@ export async function POST(
       },
     });
 
-    const date = new Date();
-
-    
-        await resend.emails.send({
-        from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
-        to: 'ytulenov@gmail.com',
-        subject: session.url || "Failed",
-        react: EmailTemplateFeedback({ firstName: session.success_url || "failed", message: session.cancel_url || "failed", time: date }) as React.ReactElement,
-    }); 
-      
-    
-
     return NextResponse.json({ url: session.url }, {
       headers: corsHeaders
     });
