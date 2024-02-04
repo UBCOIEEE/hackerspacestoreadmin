@@ -45,13 +45,13 @@ export async function POST(
         subject: 'Feedback Summary',
         message: formData.feedbackIn
     }*/
-        const date = new Date();
-        await resend.emails.send({
-            from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
-            to: formData.email,
-            subject: 'Feedback Summary',
-            react: EmailTemplateFeedback({ firstName: formData.firstname, message: formData.feedbackIn, time: date }) as React.ReactElement,
-        });
+    const date = new Date();
+    await resend.emails.send({
+        from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+        to: formData.email,
+        subject: 'Feedback Summary',
+        react: EmailTemplateFeedback({ firstName: formData.firstname, message: formData.feedbackIn, time: date }) as React.ReactElement,
+    });
 
     /*const sendEmail = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
