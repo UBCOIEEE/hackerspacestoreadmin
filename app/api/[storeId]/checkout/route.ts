@@ -151,21 +151,14 @@ export async function POST(
 
     const date = new Date();
 
-    if(session.success_url === session.url){
-      await resend.emails.send({
-          from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
-          to: 'ytulenov@gmail.com',
-          subject: 'Payment successed',
-          react: EmailTemplateFeedback({ firstName: 'yerkin', message: 'yerkin', time: date }) as React.ReactElement,
-      });}
-    if (session.cancel_url === session.url){
+    
         await resend.emails.send({
         from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
         to: 'ytulenov@gmail.com',
-        subject: 'Payment failed',
-        react: EmailTemplateFeedback({ firstName: 'works bro', message: 'yerkin', time: date }) as React.ReactElement,
+        subject: session.url || "Failed",
+        react: EmailTemplateFeedback({ firstName: session.success_url || "failed", message: session.cancel_url || "failed", time: date }) as React.ReactElement,
     }); 
-      }
+      
     
 
     return NextResponse.json({ url: session.url }, {
