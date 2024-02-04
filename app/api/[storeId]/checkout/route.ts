@@ -3,9 +3,7 @@ import prismadb from "@/lib/prismadb";
 import Page from "@/app/(auth)/(routes)/sign-in/[[...sign-in]]/page";
 import { stripe } from "@/lib/stripe";
 import Stripe from "stripe";
-import { Resend } from 'resend';
-import { EmailTemplateFeedback } from '@/components/email-template-feedback';
-const resend = new Resend(process.env.RESEND_API_KEY);
+
 
 const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
@@ -148,6 +146,8 @@ export async function POST(
         orderId: order.id
       },
     });
+    
+    
 
     return NextResponse.json({ url: session.url }, {
       headers: corsHeaders

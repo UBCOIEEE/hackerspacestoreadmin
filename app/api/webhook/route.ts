@@ -53,14 +53,6 @@ export async function POST(req: Request) {
         orderItems: true,
       }
     });
-  }else{
-    const date = new Date();
-    await resend.emails.send({
-    from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
-    to: 'ytulenov@gmail.com',
-    subject: 'Payment failed',
-    react: EmailTemplateFeedback({ firstName: 'works bro', message: 'yerkin', time: date }) as React.ReactElement,
-  }); 
   }
 
   return new NextResponse(null, { status: 200 });
