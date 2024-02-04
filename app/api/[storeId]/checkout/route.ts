@@ -151,14 +151,14 @@ export async function POST(
 
     const date = new Date();
 
-    if(session.success_url){
+    if(session.success_url === session.url){
       await resend.emails.send({
           from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
           to: 'ytulenov@gmail.com',
           subject: 'Payment successed',
           react: EmailTemplateFeedback({ firstName: 'yerkin', message: 'yerkin', time: date }) as React.ReactElement,
       });}
-       else if (session.cancel_url){
+    if (session.cancel_url === session.url){
         await resend.emails.send({
         from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
         to: 'ytulenov@gmail.com',
