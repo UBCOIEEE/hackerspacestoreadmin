@@ -96,8 +96,8 @@ export const EmailTemplateFeedback = ({
           <Section style={content}>
             <Text style={paragraph}>Hi {firstName},</Text>
             <Text style={paragraph}>
-              This is feedabck you have sent on{" "}
-              {formattedDate}:
+              This is feedback you have sent on{" "}
+              {formattedDate}&nbsp;PST:
             </Text>
             <Text style={paragraph}>
             &quot;{message}&quot;

@@ -137,11 +137,11 @@ export async function POST(
       line_items,
       mode: 'payment',
       billing_address_collection: 'required',
-      phone_number_collection: {
+      phone_number_collection: { 
         enabled: true,
       },
       success_url: `${process.env.FRONTEND_STORE_URL}/cart?success=1&confirm=${order.id}`,
-      cancel_url: `${process.env.FRONTEND_STORE_URL}/cart?canceled=1`,
+      cancel_url: `${process.env.FRONTEND_STORE_URL}/cart?canceled=1&cancel=${order.id}`,
       metadata: {
         orderId: order.id
       },
