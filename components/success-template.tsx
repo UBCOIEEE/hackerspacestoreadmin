@@ -98,15 +98,15 @@ export const ConfirmationReceiptEmail = ({
                 <Img
                     src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706233756/IEEE_Okanagan_Student_Chapter_Logo_transparent_yiowkm.png"
                     width="66"
-                    height="22"
+                    height="66"
                     alt="UBCOIEEE"
                     style={{ margin: "auto" }}
                 />
-                <Heading style={global.heading}>We are waiting for you!</Heading>
+                <Heading style={global.heading}>We are waiting for you, {order.firstname}&nbsp;{order.lastname}!</Heading>
                 <Text style={global.text}>
-                    We have successfully received your order. Your order is ready for pickup! The hackerspace is located at EME2245. Our working hours can be found in the highlights of our
+                    We have successfully received your order. Your order is ready for pickup! The hackerspace is located at EME2245. Our working hours can be found in the highlights of our&nbsp;
                     <a className="underline" href='https://www.instagram.com/ieeeubco/'>
-                        &nbsp;<u>Instagram Page</u>
+                        <u>Instagram Page</u>
                         </a>
                 </Text>
                 <Text style={{ ...global.text, marginTop: 24 }}>
@@ -116,14 +116,10 @@ export const ConfirmationReceiptEmail = ({
                 </Text>
                 </Section>
                 <Hr style={global.hr} />
-                <Section style={global.defaultPadding}>
-                <Text style={adressTitle}>Recipient: {order.firstname}&nbsp;{order.lastname}</Text>
-                </Section>
-                <Hr style={global.hr} />
                 {order.orderItems.map((item) => (
                     <Section
                     key={item.productvalue.id}
-                    style={{ ...paddingX, paddingTop: "40px", paddingBottom: "40px" }}
+                    style={{ ...paddingX, paddingTop: "20px", paddingBottom: "20px" }}
                     >
                     <Row>
                         <Column>
@@ -131,11 +127,11 @@ export const ConfirmationReceiptEmail = ({
                             src={item.productvalue.images[0].url}
                             alt=""
                             style={{ float: "left" }}
-                            width="260px"
+                            width="300px"
                         />
                         </Column>
-                        <Column style={{ verticalAlign: "top", paddingLeft: "12px" }}>
-                        <Text style={{ ...paragraph, fontWeight: "500" }}>
+                        <Column style={{ verticalAlign: "top", paddingLeft: "10px" }}>
+                        <Text style={{ ...paragraph, fontWeight: "900" }}>
                             {item.product.name}
                         </Text>
                         <Text style={global.text}>Category: {item.product.category.name}</Text>
@@ -157,27 +153,23 @@ export const ConfirmationReceiptEmail = ({
                             </>
                         )}
                         <Text style={global.text}>
-                            Color:&nbsp;
-                            <div
-                                className="h-6 w-6 rounded-full border"
-                                style={{ backgroundColor: item.productvalue.color.value }}
-                            />
+                            Color: {item.productvalue.color.name}
                         </Text>
-                        <Text style={global.text}>Price per Unit: {item.productvalue.price}</Text>
+                        <Text style={global.text}>Price per Unit: {item.productvalue.price}CAD</Text>
                         <Text style={global.text}>Quantity: {item.quantity}</Text>
-                        <Text style={global.text}>Price: {Number(item.productvalue.price)*Number(item.quantity)}</Text>
+                        <Text style={global.text}>Price: {Number(item.productvalue.price)*Number(item.quantity)}CAD</Text>
                         </Column>
                     </Row>
                     </Section>    
                 ))}
                 <Hr style={global.hr} />
-                <Section style={global.defaultPadding}>
-                <Row style={{ display: "inline-flex", marginBottom: 40 }}>
-                    <Column align="center" style={{ width: "170px" }}>
-                    <Text style={global.paragraphWithBold}>Order Date</Text>
-                    <Text style={track.number}>{formattedDate}&nbsp;PST</Text>
+                <Section style={{ ...paddingY, textAlign: 'center' }}>
+                    <Row style={{ display: "inline-flex", marginBottom: 40 }}>
+                    <Column align="center" style={{ width: "100%" }}>
+                        <Text style={global.paragraphWithBold}>Order Date</Text>
+                        <Text style={track.number}>{formattedDate}&nbsp;PST</Text>
                     </Column>
-                </Row>
+                    </Row>
                 </Section>
                 <Hr style={global.hr} />
                 <Section style={menu.container}>
@@ -197,7 +189,7 @@ export const ConfirmationReceiptEmail = ({
                     </Column>
                     <Column style={{ width: "25%" }} colSpan={1}>
                     <Link href="https://hackerspace.ubcoieee.org/privacy/" style={menu.text}>
-                        Policies & Returns
+                        Policies
                     </Link>
                     </Column>
                     <Column style={{ width: "25%" }} colSpan={1}>
@@ -208,23 +200,23 @@ export const ConfirmationReceiptEmail = ({
                 </Row>
                 </Section>
                 <Hr style={global.hr} />
-                <Section style={paddingY}>
-                <Row>
-                    <Text style={global.heading}>UBCO IEEE</Text>
-                </Row>
-                <Row style={categories.container}>
-                    <Column align="center">
-                    <Link href="https://hackerspace.ubcoieee.org/" style={categories.text}>
-                        Store
-                    </Link>
-                    </Column>
-                    <Column align="center">
-                    <Link href="https://ubcoieee.org/" style={categories.text}>
-                        Club
-                    </Link>
-                    </Column>
-                </Row>
-                </Section>
+                    <Section style={paddingY}>
+                        <Row style={{ textAlign: 'center' }}>
+                        <   Text style={global.heading}>UBCO IEEE</Text>
+                        </Row>
+                        <Row style={categories.container}>
+                        <Column align="center">
+                            <Link href="https://hackerspace.ubcoieee.org/" style={categories.text}>
+                                Store
+                            </Link>
+                            </Column>
+                            <Column align="center">
+                            <Link href="https://ubcoieee.org/" style={categories.text}>
+                                Club
+                            </Link>
+                            </Column>
+                        </Row>
+                    </Section>
                 <Hr style={{ ...global.hr, marginTop: "12px" }} />
                 <Section style={paddingY}>
                 <Row style={footer.policy}>
@@ -355,24 +347,6 @@ fontSize: "15px",
 lineHeight: "1",
 paddingLeft: "10px",
 paddingRight: "10px",
-};
-
-const recomendations = {
-container: {
-    padding: "20px 0",
-},
-product: {
-    verticalAlign: "top",
-    textAlign: "left" as const,
-    paddingLeft: "2px",
-    paddingRight: "2px",
-},
-title: { ...recomendationsText, paddingTop: "12px", fontWeight: "500" },
-text: {
-    ...recomendationsText,
-    paddingTop: "4px",
-    color: "#747474",
-},
 };
 
 const menu = {
