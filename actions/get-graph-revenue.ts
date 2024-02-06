@@ -12,14 +12,7 @@ export const getGraphRevenue = async (storeId: string): Promise<GraphData[]> => 
       isPaid: true,
     },
     include: {
-      orderItems: {
-        include: {
-          productvalue: {        
-            select: {
-              price: true,
-          },}
-        },
-      },
+      orderItems: true
     },
   });
 
@@ -32,7 +25,7 @@ export const getGraphRevenue = async (storeId: string): Promise<GraphData[]> => 
 
     for (const item of order.orderItems) {
       // Use reduce to sum the prices for each product value
-      revenueForOrder += item.productvalue.price;
+      revenueForOrder += item.price;
     }
 
     // Adding the revenue for this order to the respective month

@@ -7,16 +7,7 @@ export const getTotalRevenue = async (storeId: string) => {
       isPaid: true
     },
     include: {
-      orderItems: {
-        include: {
-          productvalue: {
-            select: { 
-              id: true,  // Include other necessary fields    
-              price: true
-            }
-          }
-        }
-      }
+      orderItems: true
     }
   });
 
