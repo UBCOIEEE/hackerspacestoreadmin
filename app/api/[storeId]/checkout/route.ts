@@ -50,14 +50,6 @@ export async function POST(
         productName: item.productName
       }));
       const productIdss: string[] = items.map((item: ItemType) => item.productValueId);
-
-      /*const productvalues = await prismadb.productvalue.findMany({
-        where: {
-          id: {
-            in: productIdss
-          }
-        }
-      });*/
     
       const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
     
@@ -73,20 +65,6 @@ export async function POST(
           }
         });
       });
-
-
-      /*productvalues.forEach((productvalue) => {
-        line_items.push({
-          quantity: 1,
-          price_data: {
-            currency: 'CAD',
-            product_data: {
-              name: productvalue.productname,
-            },
-            unit_amount: productvalue.price * 100
-          }
-        });
-      });*/
 
     const latestOrder = await prismadb.order.findFirst({
         where: {
@@ -111,17 +89,78 @@ export async function POST(
         })
       );
 
+    const getProductById = async (productId: string) => {
+      try {
+          const product = await prismadb.product.findUnique({
+              where: {
+                  id: productId,
+              },
+              include:{
+                size: true,
+                category: true
+              }
+          });
+          return product;
+      } catch (error) {
+          console.error('Error fetching product:', error);
+          throw error;
+      }
+  };
+
+  const getProductValueById = async (productvalueId: string) => {
+    try {
+        const productvalue = await prismadb.productvalue.findUnique({
+            where: {
+                id: productvalueId,
+            },
+            include:{
+                images: true,
+                color: true
+            }
+        });
+        return productvalue;
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        throw error;
+    }
+};
+    
     const order = await prismadb.order.create({
         data: { 
             storeId: params.storeId, 
             isPaid: false,
             orderItems: {
-                create: productIds.map(({ id, productIndex, productQuantity, productValueId }) => ({
-                  product: { connect: { id: id } },
-                  productvalue: { connect: { id: productValueId } },
-                  quantity: productQuantity,
-                  productIndex: productIndex,
-                }))
+                create: await Promise.all(productIds.map(async ({ id, productIndex, productQuantity, productValueId }) => {
+                  const product = await getProductById(id);
+                  if (!product) {
+                    throw new Error(`Product with ID ${id} not found.`);
+                  }
+                  const productvalue = await getProductValueById(productValueId);
+                  if (!productvalue) {
+                    throw new Error(`ProductValue with ID ${productValueId} not found.`);
+                  }
+                  return {
+                      name: product.name,
+                      categoryname: product.category.name,
+                      quantitychosen: productQuantity, 
+                      mastertype: product.mastertype,
+                      typevaluemaster: productvalue.typevaluemaster,
+                      childrentype: product.childrentype,
+                      typevaluechildren: productvalue.typevaluechildren,
+                      thirdtype: product.thirdtype,
+                      typevaluethird: productvalue.typevaluethird,
+                      quantityavailableatproductvalue: productvalue.quantity,
+                      imageurl: productvalue.images[0].url,
+                      colorname: productvalue.color.name,
+                      colorvalue: productvalue.color.value,
+                      productIndex: productIndex,
+                      description: product.description,
+                      price: productvalue.price,
+                      sizename: product.size.name,
+                      sizevalue: product.size.value,
+                      mode: product.mode,
+                  };
+              })),
             },
             totalPrice: productIds.reduce((total, item) => {return total + Number(item.productPrice)*Number(item.productQuantity);}, 0),
             confirmationid: confirmationId,

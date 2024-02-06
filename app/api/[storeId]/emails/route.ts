@@ -26,7 +26,7 @@ export async function POST(
             id: orderid
         },
         include:{ 
-            orderItems: {
+            orderItems: true/*{
                 include: {
                     product: {
                         select:{
@@ -54,7 +54,7 @@ export async function POST(
                         }
                     }
                 }
-            }
+            }*/
         }
     })  
 

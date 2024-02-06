@@ -35,36 +35,27 @@ interface EmailTemplateProps {
         createdAt: Date;
         confirmationid: number;
         orderItems: {
-            product:{
-                id: string;
-                name: string;
-                size: {
-                    name: string;
-                    value: string;
-                }
-                category:{
-                    name: string
-                }
-                mastertype: string;
-                mode: string;
-                childrentype: string;
-                thirdtype: string;
-            };
-            quantity: number;
-            productvalue:{
-                id: string;
-                index: number;
-                price: number;
-                quantity: number,
-                typevaluemaster: string;
-                typevaluechildren: string;
-                typevaluethird: string;
-                images: {url: string}[];
-                color: {
-                    name: string;
-                    value: string;
-                }
-            }
+            id: string;
+            categoryname: string;
+            quantitychosen: number;
+            productIndex: number;
+            mastertype: string;
+            typevaluemaster: string;
+            childrentype: string;
+            typevaluechildren: string;
+            thirdtype: string;
+            typevaluethird: string;
+            name: string;
+            quantityavailableatproductvalue: number;
+            colorname: string;
+            colorvalue: string;
+            imageurl: string;
+            description: string;
+            price: number;
+            sizename: string;
+            sizevalue: string;
+            mode: string;
+            createdAt: Date;
         }[];
     }
   }
@@ -118,13 +109,13 @@ export const ConfirmationReceiptEmail = ({
                 <Hr style={global.hr} />
                 {order.orderItems.map((item) => (
                     <Section
-                    key={item.productvalue.id}
+                    key={item.id}
                     style={{ ...paddingX, paddingTop: "20px", paddingBottom: "20px" }}
                     >
                     <Row>
                         <Column>
                         <Img
-                            src={item.productvalue.images[0].url}
+                            src={item.imageurl}
                             alt=""
                             style={{ float: "left" }}
                             width="300px"
@@ -132,32 +123,32 @@ export const ConfirmationReceiptEmail = ({
                         </Column>
                         <Column style={{ verticalAlign: "top", paddingLeft: "10px" }}>
                         <Text style={{ ...paragraph, fontWeight: "900" }}>
-                            {item.product.name}
+                            {item.name}
                         </Text>
-                        <Text style={global.text}>Category: {item.product.category.name}</Text>
-                        <Text style={global.text}>Size: {item.product.size.name}</Text>
-                        {item.product.mode === "2" && (
-                            <Text style={global.text}>{item.product.mastertype}: {item.productvalue.typevaluemaster}</Text>
+                        <Text style={global.text}>Category: {item.categoryname}</Text>
+                        <Text style={global.text}>Size: {item.sizename}</Text>
+                        {item.mode === "2" && (
+                            <Text style={global.text}>{item.mastertype}: {item.typevaluemaster}</Text>
                         )}
-                        {item.product.mode === "3" && (
+                        {item.mode === "3" && (
                             <>
-                                <Text style={global.text}>{item.product.mastertype}: {item.productvalue.typevaluemaster}</Text>
-                                <Text style={global.text}>{item.product.childrentype}: {item.productvalue.typevaluechildren}</Text>
+                                <Text style={global.text}>{item.mastertype}: {item.typevaluemaster}</Text>
+                                <Text style={global.text}>{item.childrentype}: {item.typevaluechildren}</Text>
                             </>
                         )}
-                        {item.product.mode === "4" && (
+                        {item.mode === "4" && (
                             <>
-                            <Text style={global.text}>{item.product.mastertype}: {item.productvalue.typevaluemaster}</Text>
-                            <Text style={global.text}>{item.product.childrentype}: {item.productvalue.typevaluechildren}</Text>
-                            <Text style={global.text}>{item.product.thirdtype}: {item.productvalue.typevaluethird}</Text>
+                            <Text style={global.text}>{item.mastertype}: {item.typevaluemaster}</Text>
+                            <Text style={global.text}>{item.childrentype}: {item.typevaluechildren}</Text>
+                            <Text style={global.text}>{item.thirdtype}: {item.typevaluethird}</Text>
                             </>
                         )}
                         <Text style={global.text}>
-                            Color: {item.productvalue.color.name}
+                            Color: {item.colorname}
                         </Text>
-                        <Text style={global.text}>Price per Unit: {item.productvalue.price}CAD</Text>
-                        <Text style={global.text}>Quantity: {item.quantity}</Text>
-                        <Text style={global.text}>Price: {Number(item.productvalue.price)*Number(item.quantity)}CAD</Text>
+                        <Text style={global.text}>Price per Unit: {item.price}CAD</Text>
+                        <Text style={global.text}>Quantity: {item.quantitychosen}</Text>
+                        <Text style={global.text}>Price: {Number(item.price)*Number(item.quantitychosen)}CAD</Text>
                         </Column>
                     </Row>
                     </Section>    

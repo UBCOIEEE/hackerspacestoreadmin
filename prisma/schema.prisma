@@ -108,7 +108,6 @@ model Product {
   isArchived    Boolean   @default(false)
   sizeId        String    // Foreign Key to Size
   size          Size      @relation(fields: [sizeId], references: [id])
-  orderItems    OrderItem[]   // Relation to Order model
   createdAt     DateTime  @default(now())  
   updatedAt     DateTime  @updatedAt
 
@@ -128,7 +127,6 @@ model Productvalue{
   index       Int  
   price Int
   typevaluethird String
-  orderItems    OrderItem[]   // Relation to Order model
   images    Image[]
   product     Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
   quantity    Int
@@ -178,18 +176,31 @@ model OrderItem {
   id        String  @id @default(uuid())
   orderId   String  // Foreign Key to Order
   order     Order   @relation(fields: [orderId], references: [id])
-  productId String  // Foreign Key to Product
-  quantity   Int
+  quantitychosen   Int
   productIndex Int 
-  product   Product @relation(fields: [productId], references: [id])
-  productvalueId String  // Foreign Key to Product
-  productvalue   Productvalue @relation(fields: [productvalueId], references: [id])
-
+  mastertype String
+  typevaluemaster String
+  childrentype String
+  typevaluechildren String
+  thirdtype String
+  typevaluethird String
+  name String
+  quantityavailableatproductvalue Int
+  colorname String
+  colorvalue String
+  imageurl String
+  categoryname String
+  description String
+  price Int
+  sizename String
+  sizevalue String
+  mode  String 
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   @@index([orderId])
-  @@index([productId])
-  @@index([productvalueId])
 
 }
+
 
 model Feedback {
   id              String    @id @default(uuid())

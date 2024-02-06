@@ -10,7 +10,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
       storeId: params.storeId,
     },
     include: {
-      orderItems: {
+      orderItems: true/*{
         include: {
           product: {
             include: {
@@ -26,7 +26,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
             }
           }
         },
-      },
+      },*/
     },
     orderBy: {
       createdAt: "desc",
@@ -52,21 +52,21 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
     isPaid: item.isPaid,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
     product: item.orderItems.map((orderItem) => ({
-      name: orderItem.product.name,
-      mastertype: orderItem.product.mastertype,
-      childrentype: orderItem.product.childrentype,
-      thirdtype: orderItem.product.thirdtype,
-      price: orderItem.productvalue.price,
-      typevaluemaster: orderItem.productvalue.typevaluemaster,
-      typevaluechildren: orderItem.productvalue.typevaluechildren,
-      typevaluethird: orderItem.productvalue.typevaluethird,
-      mode: orderItem.product.mode,
-      size: orderItem.product.size.value,
-      image: orderItem.productvalue.images[0].url,
-      color: orderItem.productvalue.color.name,
-      quantity: orderItem.quantity,
-      index: orderItem.productvalue.index,
-      category: orderItem.product.category.name
+      name: orderItem.name,
+      mastertype: orderItem.mastertype,
+      childrentype: orderItem.childrentype,
+      thirdtype: orderItem.thirdtype,
+      price: orderItem.price,
+      typevaluemaster: orderItem.typevaluemaster,
+      typevaluechildren: orderItem.typevaluechildren,
+      typevaluethird: orderItem.typevaluethird,
+      mode: orderItem.mode,
+      size: orderItem.sizevalue,
+      image: orderItem.imageurl,
+      color: orderItem.colorname,
+      quantity: orderItem.quantitychosen,
+      index: orderItem.productIndex,
+      category: orderItem.categoryname
     })),
   }));
 

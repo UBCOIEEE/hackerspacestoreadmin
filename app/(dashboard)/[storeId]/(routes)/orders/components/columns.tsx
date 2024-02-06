@@ -96,7 +96,7 @@ const OrderCell: React.FC<OrderCellProps> = ({ cell }) => {
                   <>
                     <br />
                   </>
-                )}
+                )} 
 
                 {product.mode === '2' && (
                   <>

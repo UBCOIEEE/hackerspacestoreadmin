@@ -14,7 +14,10 @@ export async function GET (
             where: {
                 id: params.orderId,
             },
-            include:{ 
+            include:{
+                orderItems: true
+            }
+            /*include:{  
                 orderItems: {
                     include: {
                         product: {
@@ -43,7 +46,7 @@ export async function GET (
                         }
                     }
                 }
-            }
+            }*/
         });
 
         return NextResponse.json(order);
