@@ -148,7 +148,7 @@ export const ConfirmationReceiptEmail = ({
                         </Text>
                         <Text style={global.text}>Price per Unit: {item.price}CAD</Text>
                         <Text style={global.text}>Quantity: {item.quantitychosen}</Text>
-                        <Text style={global.text}>Price: {Number(item.price)*Number(item.quantitychosen)}CAD</Text>
+                        <Text style={global.text}>Price: {Number((Number(item.price.toFixed(2))*Number(item.quantitychosen.toFixed(2))).toFixed(2))}CAD</Text>
                         </Column>
                     </Row>
                     </Section>    

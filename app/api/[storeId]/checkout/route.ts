@@ -162,7 +162,7 @@ export async function POST(
                   };
               })),
             },
-            totalPrice: productIds.reduce((total, item) => {return total + Number((item.productPrice.toFixed(2))*Number(item.productQuantity.toFixed(2)).toFixed(2));}, 0),
+            totalPrice: productIds.reduce((total, item) => {return total + Number((Number(item.productPrice.toFixed(2))*Number(item.productQuantity.toFixed(2))).toFixed(2))}, 0),
             confirmationid: confirmationId,
             firstname: formData.firstname,
             lastname: formData.lastname,
