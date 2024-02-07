@@ -437,7 +437,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                               <FormLabel>Price</FormLabel>
                               <FormControl>
                                 <Input
-                                  type="number"
+                                  type="number" 
                                   disabled={loading}
                                   placeholder="9.99"
                                   {...field}

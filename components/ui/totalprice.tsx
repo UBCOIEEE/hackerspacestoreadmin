@@ -30,7 +30,7 @@ const TotalPrice: React.FC<CurrencyProps> = ({
         <div
             className = "font-semibold"
         >
-            Total: {formatter.format(Number(value)*Number(quantity))}
+            Total: {formatter.format(Number(value.toFixed(2))*Number(quantity.toFixed(2)))}
         </div>
     );
   }

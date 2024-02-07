@@ -125,7 +125,7 @@ model Productvalue{
   productId   String
   productname String
   index       Int  
-  price Int
+  price Float
   typevaluethird String
   images    Image[]
   product     Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
@@ -159,7 +159,7 @@ model Order {
   firstname String @default("")
   lastname  String @default("")
   studentId  String @default("")
-  totalPrice Int 
+  totalPrice Float 
   address    String    @default("")
   phone      String    @default("")
   personalemail  String @default("")
@@ -191,7 +191,7 @@ model OrderItem {
   imageurl String
   categoryname String
   description String
-  price Int
+  price Float
   sizename String
   sizevalue String
   mode  String 
