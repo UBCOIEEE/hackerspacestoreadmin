@@ -127,7 +127,7 @@ const OrderCell: React.FC<OrderCellProps> = ({ cell }) => {
                     <br />
                   </>
                 )}
-
+ 
                 Quantities: {product.quantity}
                 <br />
                 <Priceperunit value={product.price} />

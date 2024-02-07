@@ -8,8 +8,8 @@ const formatter = new Intl.NumberFormat("en-US",{
 });
 
 interface CurrencyProps{
-    value?: string | number;
-    quantity?: string | number;
+    value: string | number;
+    quantity: string | number;
 }
 
 const TotalPrice: React.FC<CurrencyProps> = ({
@@ -30,7 +30,7 @@ const TotalPrice: React.FC<CurrencyProps> = ({
         <div
             className = "font-semibold"
         >
-            Total: {formatter.format(Number(value.toFixed(2))*Number(quantity.toFixed(2)))}
+            Total: {formatter.format(Number(Number(value).toFixed(2))*Number(quantity.toFixed(2)))}
         </div>
     );
   }
