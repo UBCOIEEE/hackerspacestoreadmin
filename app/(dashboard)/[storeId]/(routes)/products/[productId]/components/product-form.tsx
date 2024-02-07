@@ -56,7 +56,7 @@ const formSchema = z.object({
       typevaluechildren: z.string().optional(),
       typevaluemaster: z.string().optional(),
       colorId: z.string().min(1),
-      price: z.coerce.number().min(1),
+      price: z.coerce.number().min(0.01),
       typevaluethird: z.string().optional(),
       images: z.object({ url: z.string() }).array(),
       quantity: z.coerce.number().min(1),
