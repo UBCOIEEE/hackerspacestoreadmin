@@ -156,12 +156,12 @@ export const ConfirmationReceiptEmail = ({
                     </Section>    
                 ))}
                 <Hr style={global.hr} />
-                <Section style={{ ...paddingY}}>
-                    <Row style={{ display: "inline-flex", marginBottom: 40, textAlign: 'center' }}>
-                    
+                <Section>
+                    <Row style={{textAlign: 'center' }}>
                         <Text style={global.paragraphWithBold}>Order Date</Text>
-                        <Text style={track.number}>{formattedDate}&nbsp;PST</Text>
-                    
+                    </Row>
+                    <Row style={{textAlign: 'center' }}>
+                    <Text style={track.number}>{formattedDate}&nbsp;PST</Text>
                     </Row>
                 </Section>
                 <Hr style={global.hr} />
