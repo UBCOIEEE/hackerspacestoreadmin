@@ -89,7 +89,7 @@ export const ConfirmationReceiptEmail = ({
                 <Img
                     src="https://res.cloudinary.com/dahjexx4c/image/upload/v1706233756/IEEE_Okanagan_Student_Chapter_Logo_transparent_yiowkm.png"
                     width="66"
-                    height="66"
+                    height="100"
                     alt="UBCOIEEE"
                     style={{ margin: "auto" }}
                 />
@@ -101,9 +101,11 @@ export const ConfirmationReceiptEmail = ({
                         </a>
                 </Text>
                 <Text style={{ ...global.text, marginTop: 24 }}>
-                    We´ve also charged your payment method for the cost of your order
-                    and will be removing any authorization holds. For payment details,
-                    please visit your Orders page on Nike.com or in the Nike app.
+                    We´ve also charged your payment method for the cost of your order. For payment details or problems,
+                    please&nbsp;
+                    <a className="underline" href='https://www.instagram.com/ieeeubco/'>
+                        Contact Us
+                    </a>
                 </Text>
                 </Section>
                 <Hr style={global.hr} />
@@ -156,7 +158,7 @@ export const ConfirmationReceiptEmail = ({
                 <Hr style={global.hr} />
                 <Section style={{ ...paddingY, textAlign: 'center' }}>
                     <Row style={{ display: "inline-flex", marginBottom: 40 }}>
-                    <Column align="center" style={{ width: "100%" }}>
+                    <Column style={{ width: "100%" }}>
                         <Text style={global.paragraphWithBold}>Order Date</Text>
                         <Text style={track.number}>{formattedDate}&nbsp;PST</Text>
                     </Column>
@@ -164,7 +166,7 @@ export const ConfirmationReceiptEmail = ({
                 </Section>
                 <Hr style={global.hr} />
                 <Section style={menu.container}>
-                <Row>
+                <Row style={{textAlign: 'center'}}>
                     <Text style={menu.title}>Get Help</Text>
                 </Row>
                 <Row style={menu.content}>
