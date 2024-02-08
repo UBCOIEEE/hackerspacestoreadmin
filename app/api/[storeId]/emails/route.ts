@@ -58,7 +58,7 @@ export async function POST(
         }
     })  
 
-    if(action==="failed" && order?.personalemail){
+    if(action==="success" && order?.personalemail){
         const date = new Date();
         await resend.emails.send({
             from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
