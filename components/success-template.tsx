@@ -170,22 +170,22 @@ export const ConfirmationReceiptEmail = ({
                     <Text style={menu.title}>Get Help</Text>
                 </Row>
                 <Row style={menu.content}>
-                    <Column style={{ width: "25%" }} colSpan={1}>
+                    <Column style={{ textAlign: 'center' }} colSpan={1}>
                     <Link href="https://ubcoieee.org/" style={menu.text}>
                        About Us
                     </Link>
                     </Column>
-                    <Column style={{ width: "25%" }} colSpan={1}>
+                    <Column style={{ textAlign: 'center'}} colSpan={1}>
                     <Link href="https://hackerspace.ubcoieee.org/faq/" style={menu.text}>
                         FAQ
                     </Link>
                     </Column>
-                    <Column style={{ width: "25%" }} colSpan={1}>
+                    <Column style={{ textAlign: 'center'}} colSpan={1}>
                     <Link href="https://hackerspace.ubcoieee.org/privacy/" style={menu.text}>
                         Policies
                     </Link>
                     </Column>
-                    <Column style={{ width: "25%" }} colSpan={1}>
+                    <Column style={{ textAlign: 'center' }} colSpan={1}>
                     <Link href="mailto:mlrc.hackerspace@gmail.com" style={menu.text}>
                         Contact Us
                     </Link>
