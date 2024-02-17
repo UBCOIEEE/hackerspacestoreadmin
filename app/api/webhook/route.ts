@@ -1,9 +1,6 @@
 import Stripe from "stripe"
 import { headers } from "next/headers"
 import { NextResponse } from "next/server"
-import { Resend } from 'resend';
-import { EmailTemplateFeedback } from '@/components/email-template-feedback';
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 import { stripe } from "@/lib/stripe"
 import prismadb from "@/lib/prismadb"
@@ -13,7 +10,7 @@ export async function POST(req: Request) {
   const signature = headers().get("Stripe-Signature") as string
 
   let event: Stripe.Event
- 
+
   try {
     event = stripe.webhooks.constructEvent(
       body,
@@ -40,7 +37,7 @@ export async function POST(req: Request) {
 
 
   if (event.type === "checkout.session.completed") {
-    const order = await prismadb.order.update({ 
+    const order = await prismadb.order.update({
       where: {
         id: session?.metadata?.orderId,
       },
@@ -53,7 +50,6 @@ export async function POST(req: Request) {
         orderItems: true,
       }
     });
-  }
 
   return new NextResponse(null, { status: 200 });
 };
