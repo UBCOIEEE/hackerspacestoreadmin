@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
-
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 import { CellAction } from "./cell-action";
 
 export type ProductColumn = {
