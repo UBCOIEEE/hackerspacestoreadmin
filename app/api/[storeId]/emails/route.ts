@@ -66,6 +66,12 @@ export async function POST(
             subject: 'Confirmation Email',
             react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
         });
+        await resend.emails.send({
+            from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+            to: 'ytulenov@gmail.com',
+            subject: 'Confirmation Email',
+            react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
+        });
     }
     
     return NextResponse.json({ url: `${process.env.FRONTEND_STORE_URL}/feedback?success=1` }, {
