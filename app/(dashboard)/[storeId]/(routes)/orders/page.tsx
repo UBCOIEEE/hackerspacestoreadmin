@@ -50,7 +50,7 @@ const OrdersPage = async ({ params }: { params: { storeId: string } }) => {
         country: item.country,*/
     totalPrice: formatter.format(item.totalPrice),
     isPaid: item.isPaid,
-    createdAt: format(item.createdAt, "ppp, MMMM do, yyyy"),
+    createdAt: format(item.createdAt.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }), "ppp, MMMM do, yyyy"),
     product: item.orderItems.map((orderItem) => ({
       name: orderItem.name,
       mastertype: orderItem.mastertype,
