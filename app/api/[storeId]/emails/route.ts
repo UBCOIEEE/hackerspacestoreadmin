@@ -69,7 +69,19 @@ export async function POST(
         await resend.emails.send({
             from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
             to: 'ytulenov@gmail.com',
-            subject: 'Confirmation Email',
+            subject: `Copy of Confirmation Email for ${order.firstname} ${order.lastname}`,
+            react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
+        });
+         await resend.emails.send({
+            from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+            to: 'mlrc.hackerspace@gmail.com',
+            subject: `Copy of Confirmation Email for ${order.firstname} ${order.lastname}`,
+            react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
+        });
+         await resend.emails.send({
+            from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+            to: 'chair@ubcoieee.org',
+            subject: `Copy of Confirmation Email for ${order.firstname} ${order.lastname}`,
             react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
         });
     }
