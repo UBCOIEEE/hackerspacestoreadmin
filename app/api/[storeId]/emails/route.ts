@@ -85,6 +85,26 @@ export async function POST(
             react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
         });
     }
+    if(action==="failed" && order?.personalemail){
+        await resend.emails.send({
+            from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+            to: 'ytulenov@gmail.com',
+            subject: `Copy of Failed Payment Email for ${order.firstname} ${order.lastname}`,
+            react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
+        });
+         await resend.emails.send({
+            from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+            to: 'mlrc.hackerspace@gmail.com',
+            subject: `Copy of Failed Payment Email for ${order.firstname} ${order.lastname}`,
+            react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
+        });
+         await resend.emails.send({
+            from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
+            to: 'chair@ubcoieee.org',
+            subject: `Copy of Failed Payment Email for ${order.firstname} ${order.lastname}`,
+            react: ConfirmationReceiptEmail({ order: order, time: date }) as React.ReactElement,
+        });
+    }
     
     return NextResponse.json({ url: `${process.env.FRONTEND_STORE_URL}/feedback?success=1` }, {
         headers: corsHeaders
