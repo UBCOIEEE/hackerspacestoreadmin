@@ -18,7 +18,7 @@ interface ItemType {
     productPrice: number;
     productName: string;
   }
-
+ 
 export async function OPTIONS() {
     return NextResponse.json({}, { headers: corsHeaders });
 } 
@@ -55,7 +55,7 @@ export async function POST(
     
       items.forEach((item: ItemType) => {
         line_items.push({
-          quantity: item.productQuantity,
+          quantity: item.productQuantity, 
           price_data: {
             currency: 'CAD',
             product_data: {
@@ -178,7 +178,7 @@ export async function POST(
       billing_address_collection: 'required',
       phone_number_collection: { 
         enabled: true,
-      },
+      }, 
       success_url: `${process.env.FRONTEND_STORE_URL}/cart?success=1&confirm=${order.id}`,
       cancel_url: `${process.env.FRONTEND_STORE_URL}/cart?canceled=1&cancel=${order.id}`,
       metadata: {

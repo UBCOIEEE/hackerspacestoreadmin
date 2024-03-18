@@ -26,37 +26,11 @@ export async function POST(
             id: orderid
         },
         include:{ 
-            orderItems: true/*{
-                include: {
-                    product: {
-                        select:{
-                            id: true,
-                            name: true,
-                            size: true,
-                            mastertype: true,
-                            mode: true,
-                            childrentype: true,
-                            thirdtype: true,
-                            category: true
-                        },
-                    },
-                    productvalue:{
-                        select:{
-                            id: true,
-                            index: true,
-                            price: true,
-                            quantity: true,
-                            typevaluemaster: true,
-                            typevaluechildren: true,
-                            typevaluethird: true,
-                            images: true,
-                            color: true
-                        }
-                    }
-                }
-            }*/
+            orderItems: true
         }
     })  
+
+    
 
     if(action==="success" && order?.personalemail){
         const date = new Date();
@@ -86,6 +60,7 @@ export async function POST(
         });
     }
     if(action==="failed" && order?.personalemail){
+        const date = new Date();
         await resend.emails.send({
             from: 'Hackerspace Store <hackerspacestore@ubcoieee.org>',
             to: 'ytulenov@gmail.com',
